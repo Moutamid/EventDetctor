@@ -1,13 +1,21 @@
 package pl.strefakursow.citycall.ui;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.widget.Toast;
 
 import com.fxn.stash.Stash;
@@ -26,6 +34,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 import java.util.Stack;
 
@@ -108,7 +117,6 @@ public class GetLocationActivity extends FragmentActivity implements OnMapReadyC
             @Override
             public void onMarkerDragEnd(Marker marker) {
                 LatLng latLng = marker.getPosition();
-                Geocoder geocoder = new Geocoder(GetLocationActivity.this, Locale.getDefault());
                 LangLatModel model = new LangLatModel(latLng.latitude, latLng.longitude);
                 Stash.put(Constants.PICKED_LOCATION, model);
 
@@ -116,4 +124,5 @@ public class GetLocationActivity extends FragmentActivity implements OnMapReadyC
         });
 
     }
+
 }
