@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -108,7 +109,7 @@ public class MapsFragment extends Fragment {
                         }
                     });
 
-            googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+            googleMap.getUiSettings().setMyLocationButtonEnabled(false);
 
             /*googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
@@ -132,6 +133,13 @@ public class MapsFragment extends Fragment {
         currentDate = new Date();
 
         current = dateFormat.format(currentDate);
+
+        Constants.databaseReference().collection("users").document(Constants.auth().getCurrentUser().getUid())
+                .get().addOnSuccessListener(documentSnapshot -> {
+                    Glide.with(requireContext()).load(documentSnapshot.getString("image")).placeholder(R.drawable.profile_icon).into(binding.profileImage);
+                }).addOnFailureListener(e -> {
+                    Toast.makeText(requireContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                });
 
         binding.profile.setOnClickListener(v -> {
             startActivity(new Intent(requireContext(), ProfileActivity.class));

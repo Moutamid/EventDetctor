@@ -2,6 +2,7 @@ package pl.strefakursow.citycall.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -13,6 +14,7 @@ import pl.strefakursow.citycall.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding binding;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,24 +22,31 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-         binding.registerTv.setOnClickListener(v -> {
-             startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
-             finish();
-         });
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Please wait");
 
-         binding.loginUserBtn.setOnClickListener(v -> {
-             if (valid()) {
-                 Constants.auth().signInWithEmailAndPassword(
-                         binding.loginEmailEt.getText().toString(),
-                         binding.loginPassEt.getText().toString()
-                 ).addOnSuccessListener(authResult -> {
+        binding.registerTv.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+            finish();
+        });
+
+        binding.loginUserBtn.setOnClickListener(v -> {
+            if (valid()) {
+                progressDialog.show();
+                Constants.auth().signInWithEmailAndPassword(
+                        binding.loginEmailEt.getText().toString(),
+                        binding.loginPassEt.getText().toString()
+                ).addOnSuccessListener(authResult -> {
+                    progressDialog.dismiss();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
-                 }).addOnFailureListener(e -> {
-                     Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                 });
-             }
-         });
+                }).addOnFailureListener(e -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
+        });
 
 
     }
