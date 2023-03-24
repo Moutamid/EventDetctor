@@ -1,11 +1,16 @@
 package pl.strefakursow.citycall.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,11 +27,11 @@ import pl.strefakursow.citycall.R;
 import pl.strefakursow.citycall.models.EventsModel;
 import pl.strefakursow.citycall.ui.EventDetailActivity;
 
-public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventVH> {
+public class EventsProAdapter extends RecyclerView.Adapter<EventsProAdapter.EventVH> {
     Context context;
     ArrayList<EventsModel> list;
 
-    public EventsAdapter(Context context, ArrayList<EventsModel> list) {
+    public EventsProAdapter(Context context, ArrayList<EventsModel> list) {
         this.context = context;
         this.list = list;
     }
@@ -34,8 +39,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventVH> {
     @NonNull
     @Override
     public EventVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.event_row, parent, false);
-        return new EventVH(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.event_per, parent, false);
+        return new EventsProAdapter.EventVH(view);
     }
 
     @Override
@@ -77,7 +82,20 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventVH> {
             Stash.put(Constants.EVENT, model);
         });
 
+        holder.delete.setOnClickListener(v -> {
+            new AlertDialog.Builder(context).setCancelable(true).setTitle("Confirm your action").setMessage("Do you want to delete this event?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        Constants.databaseReference().collection("events").document("E").collection("events")
+                                .document(model.getId()).delete().addOnSuccessListener(unused -> {
+                                    dialog.dismiss();
+                                    Toast.makeText(context, "Event Deleted", Toast.LENGTH_SHORT).show();
+                                    notifyItemRemoved(holder.getAdapterPosition());
+                                }).addOnFailureListener(e -> {
+                                    Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                });
+                    }).setNegativeButton("No", (dialog, which) -> dialog.dismiss()).show();
 
+        });
     }
 
     @Override
@@ -89,6 +107,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventVH> {
         MaterialTextView category, rating, desc;
         ShapeableImageView imageView;
         ImageView star1,star2,star3,star4,star5;
+        ImageButton delete;
+
         public EventVH(@NonNull View itemView) {
             super(itemView);
             category = itemView.findViewById(R.id.categoryTv);
@@ -102,6 +122,9 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventVH> {
             star4 = itemView.findViewById(R.id.star4);
             star5 = itemView.findViewById(R.id.star5);
 
+            delete = itemView.findViewById(R.id.delete);
+
         }
     }
+
 }

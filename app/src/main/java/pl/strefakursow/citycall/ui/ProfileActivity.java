@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import pl.strefakursow.citycall.Constants;
 import pl.strefakursow.citycall.R;
 import pl.strefakursow.citycall.adapters.EventsAdapter;
+import pl.strefakursow.citycall.adapters.EventsProAdapter;
 import pl.strefakursow.citycall.databinding.ActivityProfileBinding;
 import pl.strefakursow.citycall.models.EventsModel;
 
@@ -79,7 +80,7 @@ public class ProfileActivity extends AppCompatActivity {
                             }
                         }
 
-                        EventsAdapter adapter = new EventsAdapter(ProfileActivity.this, list);
+                        EventsProAdapter adapter = new EventsProAdapter(ProfileActivity.this, list);
                         binding.recyclerView.setAdapter(adapter);
 
                     }

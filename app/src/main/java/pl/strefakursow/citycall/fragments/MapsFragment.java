@@ -28,6 +28,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import pl.strefakursow.citycall.Constants;
 import pl.strefakursow.citycall.R;
 import pl.strefakursow.citycall.databinding.FragmentMapsBinding;
@@ -37,7 +41,9 @@ import pl.strefakursow.citycall.ui.GetLocationActivity;
 import pl.strefakursow.citycall.ui.ProfileActivity;
 
 public class MapsFragment extends Fragment {
-
+    SimpleDateFormat dateFormat;
+    Date currentDate;
+    String current;
     FragmentMapsBinding binding;
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -76,9 +82,17 @@ public class MapsFragment extends Fragment {
                                         documentSnapshot.getDouble("star4"),
                                         documentSnapshot.getDouble("star5")
                                 );
-                                LatLng sydney = new LatLng(model.getLatitude(), model.getLongitude());
-                                googleMap.addMarker(new MarkerOptions().position(sydney).title("Event Start at " + model.getStartDate() + " \n End At " + model.getEndDate()));
-
+                                Date endDate, cur;
+                                try {
+                                    endDate = dateFormat.parse(model.getEndDate());
+                                    cur = dateFormat.parse(current);
+                                } catch (ParseException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                if (endDate.compareTo(cur) >= 0) {
+                                    LatLng sydney = new LatLng(model.getLatitude(), model.getLongitude());
+                                    googleMap.addMarker(new MarkerOptions().position(sydney).title("Event Start at " + model.getStartDate() + " \n End At " + model.getEndDate()));
+                                }
                             }
 
                             Task<Location> task = fusedLocationProviderClient.getLastLocation();
@@ -112,6 +126,12 @@ public class MapsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentMapsBinding.inflate(getLayoutInflater(), container, false);
+
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        currentDate = new Date();
+
+        current = dateFormat.format(currentDate);
 
         binding.profile.setOnClickListener(v -> {
             startActivity(new Intent(requireContext(), ProfileActivity.class));
