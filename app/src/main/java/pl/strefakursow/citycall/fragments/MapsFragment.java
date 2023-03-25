@@ -44,8 +44,10 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import pl.strefakursow.citycall.Constants;
 import pl.strefakursow.citycall.R;
@@ -65,6 +67,7 @@ public class MapsFragment extends Fragment {
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     EventsModel model;
+    Map<String, Object> marker = new HashMap<>();
 
     @Nullable
     @Override
@@ -180,9 +183,12 @@ public class MapsFragment extends Fragment {
 
                                                 if (endDate.compareTo(cur) >= 0) {
                                                     if (markerCity.equals(myCity)) {
-                                                        LatLng marker = new LatLng(model.getLatitude(), model.getLongitude());
-                                                        googleMap.addMarker(new MarkerOptions().position(marker).title("Event Start at " + model.getStartDate() + " & End At " + model.getEndDate()));
-                                                        googleMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
+                                                        LatLng mark = new LatLng(model.getLatitude(), model.getLongitude());
+                                                        MarkerOptions mo = new MarkerOptions().position(mark).flat(true)
+                                                                .rotation(0).title( model.getCategory() + " event Start at " + model.getStartDate());
+                                                        Marker mkr = googleMap.addMarker(mo);
+                                                        marker.put(mkr.getId(), model);
+                                                        googleMap.moveCamera(CameraUpdateFactory.newLatLng(mark));
                                                     }
                                                 }
                                             }
@@ -190,6 +196,17 @@ public class MapsFragment extends Fragment {
                                     });
 
                             googleMap.getUiSettings().setMyLocationButtonEnabled(false);
+
+                            googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                                @Override
+                                public boolean onMarkerClick(@NonNull Marker mark) {
+                                    EventsModel model1 = (EventsModel) marker.get(mark.getId());
+                                    startActivity(new Intent(requireContext(), EventDetailActivity.class));
+                                    Stash.put(Constants.EVENT, model1);
+                                    return false;
+                                }
+                            });
+
                         });
                     }
                 }

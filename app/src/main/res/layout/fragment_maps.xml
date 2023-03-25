@@ -23,6 +23,25 @@
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        app:cardCornerRadius="50sp">
+
+        <ImageView
+            android:id="@+id/location"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:tint="@color/black"
+            android:padding="10sp"
+            android:src="@drawable/navigate_stop_img" />
+
+    </androidx.cardview.widget.CardView>
+
 
     <fragment
         android:id="@+id/map"
