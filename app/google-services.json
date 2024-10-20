@@ -1,33 +1,240 @@
 {
   "project_info": {
-    "project_number": "571343039302",
-    "project_id": "citycall-38101",
-    "storage_bucket": "citycall-38101.appspot.com"
+    "project_number": "609485473497",
+    "firebase_url": "https://recover-projects-2-default-rtdb.firebaseio.com",
+    "project_id": "recover-projects-2",
+    "storage_bucket": "recover-projects-2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:571343039302:android:619e65111f5ae9dfa4d347",
+        "mobilesdk_app_id": "1:609485473497:android:20262fd55f98cb8a4c60c8",
         "android_client_info": {
-          "package_name": "pl.strefakursow.citycall"
+          "package_name": "com.moutamid.chamaaa"
         }
       },
       "oauth_client": [
         {
-          "client_id": "571343039302-mdme6plsk2fc15psv6p76m8mivegjjat.apps.googleusercontent.com",
+          "client_id": "609485473497-44q1ba53v0aq72uniobb5ehg01i4mcs5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moutamid.chamaaa",
+            "certificate_hash": "f39a3ca243502e996f2be8d87b2ec0391f576d60"
+          }
+        },
+        {
+          "client_id": "609485473497-vmt7esrduop1fs50ngefuorg8us7tdvb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moutamid.chamaaa",
+            "certificate_hash": "1e3a26a5f7cc069683db796efde1ab18eebe2a95"
+          }
+        },
+        {
+          "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDVsiC0hyxtttOb5NXs2do_yFgIel8jYmk"
+          "current_key": "AIzaSyBmwxpFOwJVgDv-VduTO7uGEstRbnPmaXw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "571343039302-mdme6plsk2fc15psv6p76m8mivegjjat.apps.googleusercontent.com",
+              "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609485473497:android:3d92aedeabd1c2a24c60c8",
+        "android_client_info": {
+          "package_name": "com.moutamid.missscaddiee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmwxpFOwJVgDv-VduTO7uGEstRbnPmaXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609485473497:android:06099158d6c41ad14c60c8",
+        "android_client_info": {
+          "package_name": "com.moutamid.sra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmwxpFOwJVgDv-VduTO7uGEstRbnPmaXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609485473497:android:cee6b35a8534677a4c60c8",
+        "android_client_info": {
+          "package_name": "com.moutamid.sra_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmwxpFOwJVgDv-VduTO7uGEstRbnPmaXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609485473497:android:b0e0caa6161a9b614c60c8",
+        "android_client_info": {
+          "package_name": "com.moutamid.torahshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609485473497-0pr540bsols8j6uk96svtef2gaudqsg0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moutamid.torahshare",
+            "certificate_hash": "1e3a26a5f7cc069683db796efde1ab18eebe2a95"
+          }
+        },
+        {
+          "client_id": "609485473497-pp0eqo95baaosgigtnfbh2lajr3olhco.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moutamid.torahshare",
+            "certificate_hash": "f39a3ca243502e996f2be8d87b2ec0391f576d60"
+          }
+        },
+        {
+          "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmwxpFOwJVgDv-VduTO7uGEstRbnPmaXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609485473497:android:35fbd6ec605caa5f4c60c8",
+        "android_client_info": {
+          "package_name": "com.moutamid.whatzboost"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmwxpFOwJVgDv-VduTO7uGEstRbnPmaXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609485473497:android:e485fa9c86afd86f4c60c8",
+        "android_client_info": {
+          "package_name": "pl.strefakursow.citycall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmwxpFOwJVgDv-VduTO7uGEstRbnPmaXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609485473497-gvmkgl3samb7lum1lrhe2g7332baa95u.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
